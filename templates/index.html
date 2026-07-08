@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kc's Learning Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="welcome-section">
+            <div class="welcome-copy">
+                <p class="eyebrow">Course Recommendation System</p>
+                <h1>Kc's Learning Platform</h1>
+                <p>
+                    Choose the topics you enjoy, and this beginner-friendly app
+                    will recommend courses.
+                </p>
+            </div>
+            <div class="welcome-stats" aria-label="Project summary">
+                <span>5 courses</span>
+                <span>Tag matching</span>
+                <span>Python backend</span>
+            </div>
+        </section>
+
+        <section class="workspace">
+            <form class="profile-form" id="recommendation-form">
+                <div class="section-heading">
+                    <p class="eyebrow">Your profile</p>
+                    <h2>Tell us about yourself</h2>
+                </div>
+
+                <div class="input-grid">
+                    <label>
+                        Name
+                        <input type="text" id="name" name="name" placeholder="Kenechukwu Ronaldo" autocomplete="name">
+                    </label>
+                    <label>
+                        Username
+                        <input type="text" id="username" name="username" placeholder="kc_dev" autocomplete="username">
+                    </label>
+                    <label>
+                        Age
+                        <input type="number" id="age" name="age" min="1" max="120" placeholder="18">
+                    </label>
+                </div>
+
+                <div class="interests-header">
+                    <div>
+                        <p class="eyebrow">Interests</p>
+                        <h2>Pick your favorite topics</h2>
+                    </div>
+                    <span id="selected-count">0 selected</span>
+                </div>
+
+                <div class="interest-list" id="interest-list">
+                    {% for interest in interests %}
+                    <button class="interest-chip" type="button" data-interest="{{ interest }}">
+                        {{ interest }}
+                    </button>
+                    {% endfor %}
+                </div>
+
+                <p class="form-message" id="form-message" role="alert"></p>
+
+                <div class="form-actions">
+                    <button class="primary-button" type="submit">Get Recommendations</button>
+                    <button class="secondary-button" type="button" id="reset-button">Reset</button>
+                </div>
+            </form>
+
+            <section class="results-section" aria-live="polite">
+                <div class="section-heading">
+                    <p class="eyebrow">Results</p>
+                    <h2>Your recommended courses</h2>
+                </div>
+                <div class="empty-state" id="empty-state">
+                    Select a few interests to see your best course matches here.
+                </div>
+                <div class="results-summary hidden" id="results-summary"></div>
+                <div class="results-list" id="results-list"></div>
+            </section>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
