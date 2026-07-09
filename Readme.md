@@ -15,3 +15,9 @@ Built with:
 - HTML
 - CSS
 - JavaScript
+
+## Development Notes
+
+The recommendation engine and backend were built by me using Python.
+
+To accelerate UI development, I used AI assistance to scaffold the frontend. I then reviewed, customized, and studied the generated HTML, CSS, JavaScript, and Flask integration to understand how the frontend and backend communicate.
